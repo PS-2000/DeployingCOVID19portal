@@ -1,0 +1,25 @@
+{% extends "base2.html" %}
+{% block body_block %}
+
+
+
+<form  action="{% url "list" %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+
+ <p>{{ form.non_field_errors }}</p>
+
+ <p>{{form.imagefile.label_tag}}
+    {{form.imagefile.help_text}}
+ </p>
+<p>{{form.imagefile.errors}}
+   {{form.imagefile}}
+</p>
+
+<p><input type="submit" name="upload_image" value="upload">
+</p>
+</form>
+{% if documents %}
+ <img src="{{ image_path }}" alt="">
+{{ image_path }}
+{% endif %}
+{% endblock %}
